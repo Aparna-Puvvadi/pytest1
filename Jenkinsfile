@@ -1,8 +1,8 @@
 pipeline{
-    agent any
+    agent {label 'JDK-PY'}
     stage('source code'){
         steps{
-            git branch: 'master', url: 'https://github.com/Aparna-Puvvadi/pytest1.git'
+            git credentialsId: '06ed9883-6839-494a-8a24-2bff76a3cdbe', url: 'https://github.com/Aparna-Puvvadi/pytest1.git'
         }
     }
     stage('Install dependencies'){
@@ -19,13 +19,13 @@ pipeline{
             }
         }
     }
-    stage('Run test'){
-        steps{
-            script{
-                  sh 'pip install tox'
-            }
-        }
-    }
+    // stage('Run test'){
+    //     steps{
+    //         script{
+    //               sh 'pip install tox'
+    //         }
+    //     }
+    // }
     stage ('Install pytest'){
         steps{
             script{
